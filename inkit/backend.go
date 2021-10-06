@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"github.com/inkitio/gosdk/client"
 )
 
 func (c *Client) GetRequest(relUrl string) ([]byte, error) {
