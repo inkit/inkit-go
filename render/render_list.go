@@ -4,9 +4,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/inkitio/gosdk/client"
+	"github.com/inkitio/gosdk/inkit"
 )
 
-func (c *client.Client) ListRenders(options *ListOptions) (*RendersList, error) {
+func (c *client.Client) ListRenders(options *inkit.ListOptions) (*RendersList, error) {
 	rendersList := &RendersList{}
 
 	var resPayload []byte
