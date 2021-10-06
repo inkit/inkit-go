@@ -6,7 +6,7 @@ import (
 	"github.com/inkitio/gosdk/client"
 )
 
-func (c *Client) ListRenders(options *ListOptions) (*RendersList, error) {
+func (c *client.Client) ListRenders(options *ListOptions) (*RendersList, error) {
 	rendersList := &RendersList{}
 
 	var resPayload []byte
