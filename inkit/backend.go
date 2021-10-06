@@ -94,8 +94,10 @@ func (c *client.Client) sendRequest(req *http.Request) ([]byte, error) {
 		return nil, fmt.Errorf("unkown error, status code: %d", res.StatusCode)
 		// handle error
 	}
+	
+	var respBytes []byte
 
-	respBytes, err := io.ReadAll(res.Body)
+	respBytes, err = io.ReadAll(res.Body)
 
 	if err != nil {
 		return nil, err
