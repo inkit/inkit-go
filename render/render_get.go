@@ -7,7 +7,7 @@ import (
 	"github.com/inkitio/gosdk/client"
 )
 
-func (c *Client) GetRender(id string) (*Render, error) {
+func (c *client.Client) GetRender(id string) (*Render, error) {
 	render := &Render{}
 
 	var resPayload []byte
@@ -24,7 +24,7 @@ func (c *Client) GetRender(id string) (*Render, error) {
 	}
 }
 
-func (c *Client) GetRenderPdf(id string) (*[]byte, error) {
+func (c *client.Client) GetRenderPdf(id string) (*[]byte, error) {
 	var resPayload []byte
 
 	resPayload, err := c.GetRequest(fmt.Sprintf("/render/%s/pdf", id))
@@ -36,7 +36,7 @@ func (c *Client) GetRenderPdf(id string) (*[]byte, error) {
 	return &resPayload, nil
 }
 
-func (c *Client) GetRenderHtml(id string) (*[]byte, error) {
+func (c *client.Client) GetRenderHtml(id string) (*[]byte, error) {
 	var resPayload []byte
 
 	resPayload, err := c.GetRequest(fmt.Sprintf("/render/%s/html", id))
