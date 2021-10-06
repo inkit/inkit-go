@@ -9,7 +9,7 @@ import (
 	"github.com/inkitio/gosdk/client"
 )
 
-func (c *Client) CreateRender(options *CreateRenderOptions) (*Render, error) {
+func (c *client.Client) CreateRender(options *CreateRenderOptions) (*Render, error) {
 	render := &Render{}
 	var resPayload []byte
 
