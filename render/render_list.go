@@ -3,6 +3,7 @@ package render
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/inkitio/gosdk/client"
 )
 
 func (c *Client) ListRenders(options *ListOptions) (*RendersList, error) {
