@@ -103,3 +103,7 @@ func (c *Client) sendRequest(req *http.Request) ([]byte, error) {
 
 	return respBytes, nil
 }
+type ListOptions struct {
+	PageSize int
+	Page int
+}
