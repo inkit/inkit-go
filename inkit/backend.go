@@ -8,7 +8,7 @@ import (
 	"github.com/inkitio/gosdk/client"
 )
 
-func (c *Client) GetRequest(relUrl string) ([]byte, error) {
+func (c *client.Client) GetRequest(relUrl string) ([]byte, error) {
 
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s%s", c.BaseUrl, relUrl), nil)
 
@@ -26,7 +26,7 @@ func (c *Client) GetRequest(relUrl string) ([]byte, error) {
 
 }
 
-func (c *Client) ListRequest(relUrl string, options *ListOptions) ([]byte, error) {
+func (c *client.Client) ListRequest(relUrl string, options *ListOptions) ([]byte, error) {
 	pageSize := 50
 	page := 1
 
@@ -50,7 +50,7 @@ func (c *Client) ListRequest(relUrl string, options *ListOptions) ([]byte, error
 	return res, nil
 }
 
-func (c *Client) PostRequest(relUrl string, payload []byte) ([]byte, error) {
+func (c *client.Client) PostRequest(relUrl string, payload []byte) ([]byte, error) {
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s%s", c.BaseUrl, relUrl), bytes.NewBuffer(payload))
 
@@ -72,7 +72,7 @@ func (c *Client) PostRequest(relUrl string, payload []byte) ([]byte, error) {
 
 }
 
-func (c *Client) sendRequest(req *http.Request) ([]byte, error) {
+func (c *client.Client) sendRequest(req *http.Request) ([]byte, error) {
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("X-Inkit-API-Token", c.apiKey)
 
