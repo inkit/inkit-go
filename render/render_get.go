@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/inkitio/gosdk/client"
 )
 
 func (c *Client) GetRender(id string) (*Render, error) {
