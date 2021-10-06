@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"github.com/inkitio/gosdk/client"
 )
 
 func (c *Client) CreateRender(options *CreateRenderOptions) (*Render, error) {
