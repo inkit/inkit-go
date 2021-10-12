@@ -1,7 +1,7 @@
 package render
 
 import (
-	"backend"
+	"github.com/inkitio/gosdk/backend"
 )
 
 type RenderClient struct {

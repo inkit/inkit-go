@@ -1,9 +1,10 @@
 package render
 
 import (
-	"backend"
 	"bytes"
 	"encoding/json"
+
+	"github.com/inkitio/gosdk/backend"
 )
 
 func (c *RenderClient) ListRenders(options *backend.ListOptions) (*RendersList, error) {
