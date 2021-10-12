@@ -61,24 +61,15 @@ err := client.Render.GetHtmlAndSaveToFile(render.id, "test.html")
 ## View a list of all renders in your organization
 
 ```golang
-renders, err := client.Render.List(nil)
 
-if err != nil {
-	fmt.Println(err)
-	return
-}
-
-for _, x := range renders.Items {
-	fmt.Println(x)
-}
-
-// you can provide options to paginate through the renders like the following:
+// You can provide pageniation options if you want to overwrite the defaults
+/*
 options := render.RenderListOptions{
 	Page:     1,
 	PageSize: 1,
 }
-
-renders, err := client.Render.List(&options)
+*/
+renders, err := client.Render.List(nil)
 
 if err != nil {
 	fmt.Println(err)
