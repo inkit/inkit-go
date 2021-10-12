@@ -14,14 +14,14 @@ client := client.NewClient("your_api_key")
 
 3. Create a render
 i. Define your render using CreateRenderOptions
-`
+```golang
 options := render.CreateRenderOptions{
 			Html:   "<html>hello</html>",
 			Width:  9,
 			Height: 11,
 			Unit:   "in",
 }
-`
+```
 ii. Submit your render to Inkit
 ```golang
 render, err := client.Render.Create(&options)
