@@ -1,19 +1,17 @@
-# Inkit Go Sdk
+# Getting Started
 
-## Getting Started
-
-1. Import the Inkit Sdk into your project
+## Import the Inkit Sdk into your project
 ```golang
 import "github.com/inkitio/gosdk/client"
 ```
 
-2. Initialize your Inkit client
+## Initialize your Inkit client
 ```golang
 client := client.NewClient("your_api_key")
 ```
 
-3. Create a render
-i. Define your render using CreateRenderOptions
+## Create a render
+### Define your render using CreateRenderOptions
 ```golang
 options := render.CreateRenderOptions{
 			Html:   "<html>hello</html>",
@@ -22,24 +20,24 @@ options := render.CreateRenderOptions{
 			Unit:   "in",
 }
 ```
-ii. Submit your render to Inkit
+### Submit your render to Inkit
 ```golang
 render, err := client.Render.Create(&options)
 ```
 
-4. Retrieve you render content
+## Retrieve you render content
 
-i. Retrieve Pdf
+### Retrieve Pdf
 ```golang
 pdfData, err := client.Render.GetPdf(render.id)
 ```
 
-ii. Retrieve Html
+### Retrieve Html
 ```golang
 htmlData, err := client.Render.GetHtml(render.id)
 ```
 
-iii. Retrieve data about the render (including status)
+### Retrieve data about the render (including status)
 ```golang
 render , err := client.Render.Get(render.id)
 ```
