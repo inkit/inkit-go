@@ -2,7 +2,10 @@
 
 ## Import the Inkit Sdk into your project
 ```golang
-import "github.com/inkitio/gosdk/client"
+import (
+	"github.com/inkitio/gosdk/client"
+	"github.com/inkitio/gosdk/render"
+)
 ```
 
 ## Initialize your Inkit client
