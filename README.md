@@ -30,11 +30,15 @@ render, err := client.Render.Create(&options)
 Retrieve Pdf
 ```golang
 pdfData, err := client.Render.GetPdf(render.id)
+// or if you want to save it locally to a file
+err := client.Render.GetPdfAndSaveToFile(render.id, "test.pdf")
 ```
 
 Retrieve Html
 ```golang
 htmlData, err := client.Render.GetHtml(render.id)
+// or if you want to save it locally to a file
+err := client.Render.GetHtmlAndSaveToFile(render.id, "test.html")
 ```
 
 Retrieve data about the render (including status)
