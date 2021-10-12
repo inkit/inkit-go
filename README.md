@@ -19,6 +19,14 @@ options := render.CreateRenderOptions{
 			Height: 11,
 			Unit:   "in",
 }
+
+// you can also convert a file on your local file system
+options := render.CreateRenderOptions{
+			FileName:   "test.html",
+			Width:  9,
+			Height: 11,
+			Unit:   "in",
+}
 ```
 Submit your render to Inkit
 ```golang
