@@ -23,7 +23,7 @@ options := render.CreateRenderOptions{
 			Unit:   "in",
 }
 
-// you can also convert a file on your local file system
+// you can also convert a file from your local file system
 options := render.CreateRenderOptions{
 			FileName:   "test.html",
 			Width:  9,
@@ -36,7 +36,7 @@ Submit your render to Inkit
 render, err := client.Render.Create(&options)
 ```
 
-## Retrieve you render content
+## Retrieve your render content
 
 Retrieve data about the render (including status). Make sure your render status is Completed before retrieving file data from it. You will recieve a 404 if the render is still In Progress
 ```golang
