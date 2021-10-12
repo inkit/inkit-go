@@ -10,11 +10,7 @@ type Client struct {
 }
 
 func NewClient(apiKey string) *Client {
-
-	backend := backend.NewBackend(apiKey)
-	renderApi := render.NewRenderClient{backend: backend}
-
 	return &Client{
-		RenderApi: renderApi,
+		RenderApi: render.NewRenderClient(backend.NewBackend(apiKey)),
 	}
 }
