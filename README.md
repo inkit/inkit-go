@@ -27,6 +27,11 @@ render, err := client.Render.Create(&options)
 
 ## Retrieve you render content
 
+Retrieve data about the render (including status). Make sure your render status is Completed before retrieving file data from it. You will recieve a 404 if the render is still In Progress
+```golang
+render , err := client.Render.Get(render.id)
+```
+
 Retrieve Pdf
 ```golang
 pdfData, err := client.Render.GetPdf(render.id)
@@ -39,9 +44,4 @@ Retrieve Html
 htmlData, err := client.Render.GetHtml(render.id)
 // or if you want to save it locally to a file
 err := client.Render.GetHtmlAndSaveToFile(render.id, "test.html")
-```
-
-Retrieve data about the render (including status)
-```golang
-render , err := client.Render.Get(render.id)
 ```
