@@ -11,7 +11,7 @@ client := client.NewClient("your_api_key")
 ```
 
 ## Create a render
-### Define your render using CreateRenderOptions
+Define your render using CreateRenderOptions
 ```golang
 options := render.CreateRenderOptions{
 			Html:   "<html>hello</html>",
@@ -20,24 +20,24 @@ options := render.CreateRenderOptions{
 			Unit:   "in",
 }
 ```
-### Submit your render to Inkit
+Submit your render to Inkit
 ```golang
 render, err := client.Render.Create(&options)
 ```
 
 ## Retrieve you render content
 
-### Retrieve Pdf
+Retrieve Pdf
 ```golang
 pdfData, err := client.Render.GetPdf(render.id)
 ```
 
-### Retrieve Html
+Retrieve Html
 ```golang
 htmlData, err := client.Render.GetHtml(render.id)
 ```
 
-### Retrieve data about the render (including status)
+Retrieve data about the render (including status)
 ```golang
 render , err := client.Render.Get(render.id)
 ```
