@@ -9,6 +9,7 @@ import (
 ```
 
 ## Initialize your Inkit client
+If you don't have an Inkit account yet, click here to create an account and grab your Api key: https://app.inkit.com/
 ```golang
 client := client.NewClient("your_api_key")
 ```
