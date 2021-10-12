@@ -62,7 +62,7 @@ err := client.Render.GetHtmlAndSaveToFile(render.id, "test.html")
 
 ```golang
 
-// You can provide pageniation options if you want to overwrite the defaults
+// You can provide pagination options if you want to overwrite the defaults
 /*
 options := render.RenderListOptions{
 	Page:     1,
