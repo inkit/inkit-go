@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/inkitio/gosdk/client"
 )
 
-func (c *client.Client) GetRender(id string) (*Render, error) {
+func (c *RenderClient) GetRender(id string) (*Render, error) {
 	render := &Render{}
 
 	var resPayload []byte
-	resPayload, err := c.GetRequest(fmt.Sprintf("/render/%s", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s", id))
 
 	if err != nil {
 		return nil, err
@@ -24,10 +23,10 @@ func (c *client.Client) GetRender(id string) (*Render, error) {
 	}
 }
 
-func (c *client.Client) GetRenderPdf(id string) (*[]byte, error) {
+func (c *RenderClient) GetRenderPdf(id string) (*[]byte, error) {
 	var resPayload []byte
 
-	resPayload, err := c.GetRequest(fmt.Sprintf("/render/%s/pdf", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/pdf", id))
 
 	if err != nil {
 		return nil, err
@@ -36,10 +35,10 @@ func (c *client.Client) GetRenderPdf(id string) (*[]byte, error) {
 	return &resPayload, nil
 }
 
-func (c *client.Client) GetRenderHtml(id string) (*[]byte, error) {
+func (c *RenderClient) GetRenderHtml(id string) (*[]byte, error) {
 	var resPayload []byte
 
-	resPayload, err := c.GetRequest(fmt.Sprintf("/render/%s/html", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/html", id))
 
 	if err != nil {
 		return nil, err

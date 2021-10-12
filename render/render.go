@@ -1,5 +1,19 @@
 package render
 
+import (
+	"backend"
+)
+
+type RenderClient struct {
+	Backend *backend.Backend
+}
+
+func NewRenderClient(backend *backend.Backend) *RenderClient {
+	return &RenderClient{
+		Backend: backend,
+	}
+}
+
 type CreateRenderOptions struct {
 	FileName          string            `json:"-"`
 	Html              string            `json:"html"`

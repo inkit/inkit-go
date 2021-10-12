@@ -6,10 +6,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"github.com/inkitio/gosdk/client"
 )
 
-func (c *client.Client) CreateRender(options *CreateRenderOptions) (*Render, error) {
+func (c *RenderClient) CreateRender(options *CreateRenderOptions) (*Render, error) {
 	render := &Render{}
 	var resPayload []byte
 
@@ -43,7 +42,7 @@ func (c *client.Client) CreateRender(options *CreateRenderOptions) (*Render, err
 		return nil, err
 	}
 
-	resPayload, err = c.PostRequest("/render", payload)
+	resPayload, err = c.Backend.PostRequest("/render", payload)
 
 	if err != nil {
 		return nil, err
