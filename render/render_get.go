@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"os"
 )
 
 func (c *RenderClient) Get(id string) (*Render, error) {
@@ -20,6 +21,28 @@ func (c *RenderClient) Get(id string) (*Render, error) {
 		return render, nil
 	} else {
 		return nil, err
+	}
+}
+func (c *RenderClient) GetPdf(id string, fileName string) error {
+	pdfData, err := c.GetPdf(id)
+
+	if err != nil {
+		return err
+	}
+
+	f, err := os.Create(fileName)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+	_, err = f.Write(*pdfData)
+
+	if err != nil {
+		return err
+	} else {
+		return nil
 	}
 }
 
@@ -45,4 +68,27 @@ func (c *RenderClient) GetHtml(id string) (*[]byte, error) {
 	}
 
 	return &resPayload, nil
+}
+
+func (c *RenderClient) GetHtml(id string, fileName string) error {
+	htmlData, err := c.GetHtml(id)
+
+	if err != nil {
+		return err
+	}
+
+	f, err := os.Create(fileName)
+
+	if err != nil {
+		return err
+	}
+
+	defer f.Close()
+	_, err = f.Write(*htmlData)
+
+	if err != nil {
+		return err
+	} else {
+		return nil
+	}
 }
