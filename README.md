@@ -3,10 +3,14 @@
 ## Getting Started
 
 1. Import the Inkit Sdk into your project
-```import "github.com/inkitio/gosdk/client"```
+```golang
+import "github.com/inkitio/gosdk/client"
+```
 
 2. Initialize your Inkit client
-```client := client.NewClient("your_api_key")```
+```golang
+client := client.NewClient("your_api_key")
+```
 
 3. Create a render
 i. Define your render using CreateRenderOptions
@@ -19,15 +23,23 @@ options := render.CreateRenderOptions{
 }
 `
 ii. Submit your render to Inkit
-```render, err := client.Render.Create(&options)```
+```golang
+render, err := client.Render.Create(&options)
+```
 
 4. Retrieve you render content
 
 i. Retrieve Pdf
-```pdfData, err := client.Render.GetPdf(render.id)```
+```golang
+pdfData, err := client.Render.GetPdf(render.id)
+```
 
 ii. Retrieve Html
-```htmlData, err := client.Render.GetHtml(render.id)```
+```golang
+htmlData, err := client.Render.GetHtml(render.id)
+```
 
 iii. Retrieve data about the render (including status)
-```render , err := client.Render.Get(render.id)```
+```golang
+render , err := client.Render.Get(render.id)
+```
