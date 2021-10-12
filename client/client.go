@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/inkitio/gosdk/backend"
-	"github.com/inkitio/gosdk/render"
+	backend "github.com/inkitio/gosdk/backend"
+	render "github.com/inkitio/gosdk/render"
 )
 
 type Client struct {
@@ -11,6 +11,6 @@ type Client struct {
 
 func NewClient(apiKey string) *Client {
 	return &Client{
-		RenderApi: render.NewRenderClient{backend: backend.NewBackend(apiKey)},
+		RenderApi: NewRenderClient{backend: backend.NewBackend(apiKey)},
 	}
 }
