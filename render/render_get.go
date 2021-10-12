@@ -23,7 +23,7 @@ func (c *RenderClient) Get(id string) (*Render, error) {
 		return nil, err
 	}
 }
-func (c *RenderClient) GetPdf(id string, fileName string) error {
+func (c *RenderClient) GetPdfAndSaveToFile(id string, fileName string) error {
 	pdfData, err := c.GetPdf(id)
 
 	if err != nil {
@@ -70,7 +70,7 @@ func (c *RenderClient) GetHtml(id string) (*[]byte, error) {
 	return &resPayload, nil
 }
 
-func (c *RenderClient) GetHtml(id string, fileName string) error {
+func (c *RenderClient) GetHtmlAndSaveToFile(id string, fileName string) error {
 	htmlData, err := c.GetHtml(id)
 
 	if err != nil {
