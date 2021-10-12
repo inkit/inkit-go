@@ -7,7 +7,7 @@ import (
 	"github.com/inkitio/gosdk/backend"
 )
 
-func (c *RenderClient) ListRenders(options *backend.ListOptions) (*RendersList, error) {
+func (c *RenderClient) List(options *backend.ListOptions) (*RendersList, error) {
 	rendersList := &RendersList{}
 
 	var resPayload []byte

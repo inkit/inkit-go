@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func (c *RenderClient) GetRender(id string) (*Render, error) {
+func (c *RenderClient) Get(id string) (*Render, error) {
 	render := &Render{}
 
 	var resPayload []byte
@@ -23,7 +23,7 @@ func (c *RenderClient) GetRender(id string) (*Render, error) {
 	}
 }
 
-func (c *RenderClient) GetRenderPdf(id string) (*[]byte, error) {
+func (c *RenderClient) GetPdf(id string) (*[]byte, error) {
 	var resPayload []byte
 
 	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/pdf", id))
@@ -35,7 +35,7 @@ func (c *RenderClient) GetRenderPdf(id string) (*[]byte, error) {
 	return &resPayload, nil
 }
 
-func (c *RenderClient) GetRenderHtml(id string) (*[]byte, error) {
+func (c *RenderClient) GetHtml(id string) (*[]byte, error) {
 	var resPayload []byte
 
 	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/html", id))

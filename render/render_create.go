@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 )
 
-func (c *RenderClient) CreateRender(options *CreateRenderOptions) (*Render, error) {
+func (c *RenderClient) Create(options *CreateRenderOptions) (*Render, error) {
 	render := &Render{}
 	var resPayload []byte
 

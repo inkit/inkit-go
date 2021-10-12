@@ -6,11 +6,11 @@ import (
 )
 
 type Client struct {
-	RenderApi *render.RenderClient
+	Render *render.RenderClient
 }
 
 func NewClient(apiKey string) *Client {
 	return &Client{
-		RenderApi: render.NewRenderClient(backend.NewBackend(apiKey)),
+		Render: render.NewRenderClient(backend.NewBackend(apiKey)),
 	}
 }
