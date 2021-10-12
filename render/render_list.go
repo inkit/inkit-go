@@ -7,11 +7,20 @@ import (
 	"github.com/inkitio/gosdk/backend"
 )
 
-func (c *RenderClient) List(options *backend.ListOptions) (*RendersList, error) {
+func (c *RenderClient) List(options *RenderListOptions) (*RendersList, error) {
 	rendersList := &RendersList{}
 
+	var backendOptions *backend.ListOptions
+
+	if options != nil {
+		backendOptions = &backend.ListOptions{
+			Page:     options.Page,
+			PageSize: options.PageSize,
+		}
+	}
+
 	var resPayload []byte
-	resPayload, err := c.Backend.ListRequest("/renders", options)
+	resPayload, err := c.Backend.ListRequest("/renders", backendOptions)
 
 	if err != nil {
 		return nil, err

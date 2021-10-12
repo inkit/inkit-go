@@ -52,3 +52,8 @@ type Sort struct {
 	Key   string `json:"key"`
 	Order int    `json:"order"`
 }
+
+type RenderListOptions struct {
+	Page     int
+	PageSize int
+}
