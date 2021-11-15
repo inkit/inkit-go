@@ -44,7 +44,7 @@ render, err := client.Render.Create(&options)
 
 Retrieve data about the render (including status). Make sure your render status is Completed before retrieving file data from it. You will recieve a 404 if the render is still In Progress
 ```golang
-render , err := client.Render.Get(render.id)
+render , err := client.Render.Get(render.Id)
 ```
 
 Retrieve Pdf
