@@ -1,7 +1,7 @@
 # Getting Started
 
 ## Get the package
-`go get github.com/inkitio/gosdk@v0.1.16`
+`go get github.com/inkitio/gosdk@v0.1.18`
 
 ## Import the Inkit Sdk into your project
 ```golang
