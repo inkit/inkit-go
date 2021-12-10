@@ -3,8 +3,8 @@ package render
 type CreateRenderOptions struct {
 	FileName          string            `json:"-"`
 	Html              string            `json:"html"`
-	Width             int               `json:"width"`
-	Height            int               `json:"height"`
+	Width             float64           `json:"width"`
+	Height            float64           `json:"height"`
 	FolderId          string            `json:"folder_id,omitempty"`
 	Unit              string            `json:"unit"`
 	MergeParameters   map[string]string `json:"merge_parameters,omitempty"`
