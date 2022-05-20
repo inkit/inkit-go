@@ -9,7 +9,8 @@ import (
 )
 
 const (
-	BaseURLV1 = "https://api.inkit.com/v1"
+	BaseURLV1    = "https://api.inkit.com/v1"
+	SupportEmail = "support@inkit.com"
 )
 
 type Backend struct {
@@ -109,14 +110,18 @@ func (b *Backend) sendRequest(req *http.Request) ([]byte, error) {
 
 	defer res.Body.Close()
 
-	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusBadRequest {
+	if res.StatusCode == http.StatusInternalServerError {
+		return nil, fmt.Errorf("Internal Server Error, status code: %d. Please check https://status.inkit.com or contact %s", res.StatusCode, SupportEmail)
+	} else if res.StatusCode == http.StatusForbidden {
+		return nil, fmt.Errorf("Unknown Error, status code: %d. Please check your API key or contact %s", res.StatusCode, SupportEmail)
+	} else if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusBadRequest {
 		/*var errRes Response
 
 		if err = json.NewDecoder(res.Body).Decode(&errRes); err == nil {
 			return errors.New(errRes.Message)
 		}*/
 
-		return nil, fmt.Errorf("unkown error, status code: %d", res.StatusCode)
+		return nil, fmt.Errorf("Unknown Error, status code: %d. Please contact %s", res.StatusCode, SupportEmail)
 		// handle error
 	}
 
