@@ -29,7 +29,7 @@ func NewBackend(apiKey string) *Backend {
 	}
 }
 
-func (b *Backend) GetRequest(relUrl string) ([]byte, error) {
+func (b *Backend) GetRequest(relUrl string, attempts int) ([]byte, error) {
 
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s%s", b.BaseUrl, relUrl), nil)
 
@@ -37,14 +37,21 @@ func (b *Backend) GetRequest(relUrl string) ([]byte, error) {
 		return nil, err
 	}
 
-	res, err := b.sendRequest(req)
+	// pdfs are created async so attempts are polling inkit servers until rendering process is created
+	for i := 0; i < attempts; i++ {
+
+		res, err := b.sendRequest(req)
+
+		if err == nil {
+			return res, nil
+		}
+	}
 
 	if err != nil {
 		return nil, err
 	}
 
-	return res, nil
-
+	return nil, fmt.Errorf("Unkown error")
 }
 
 type ListOptions struct {
@@ -84,10 +91,6 @@ func (b *Backend) PostRequest(relUrl string, payload []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	/*if err := c.sendRequest(req, res); err != nil {
-		return err
-	}*/
-
 	res, err := b.sendRequest(req)
 
 	if err != nil {
@@ -95,7 +98,6 @@ func (b *Backend) PostRequest(relUrl string, payload []byte) ([]byte, error) {
 	}
 
 	return res, nil
-
 }
 
 func (b *Backend) sendRequest(req *http.Request) ([]byte, error) {
@@ -115,11 +117,6 @@ func (b *Backend) sendRequest(req *http.Request) ([]byte, error) {
 	} else if res.StatusCode == http.StatusForbidden {
 		return nil, fmt.Errorf("Unknown Error, status code: %d. Please check your API key or contact %s", res.StatusCode, SupportEmail)
 	} else if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusBadRequest {
-		/*var errRes Response
-
-		if err = json.NewDecoder(res.Body).Decode(&errRes); err == nil {
-			return errors.New(errRes.Message)
-		}*/
 
 		return nil, fmt.Errorf("Unknown Error, status code: %d. Please contact %s", res.StatusCode, SupportEmail)
 		// handle error

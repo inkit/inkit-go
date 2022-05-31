@@ -11,7 +11,7 @@ func (c *RenderClient) Get(id string) (*Render, error) {
 	render := &Render{}
 
 	var resPayload []byte
-	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s", id, 1))
 
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func (c *RenderClient) GetPdfAndSaveToFile(id string, fileName string) error {
 func (c *RenderClient) GetPdf(id string) (*[]byte, error) {
 	var resPayload []byte
 
-	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/pdf", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/pdf", id, 10))
 
 	if err != nil {
 		return nil, err
@@ -61,7 +61,7 @@ func (c *RenderClient) GetPdf(id string) (*[]byte, error) {
 func (c *RenderClient) GetHtml(id string) (*[]byte, error) {
 	var resPayload []byte
 
-	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/html", id))
+	resPayload, err := c.Backend.GetRequest(fmt.Sprintf("/render/%s/html", id, 10))
 
 	if err != nil {
 		return nil, err
