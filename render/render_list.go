@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/inkitio/gosdk/backend"
+	"github.com/inkit/inkit-go/backend"
 )
 
 func (c *RenderClient) List(options *RenderListOptions) (*RendersList, error) {

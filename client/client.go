@@ -1,8 +1,8 @@
 package client
 
 import (
-	"github.com/inkitio/gosdk/backend"
-	"github.com/inkitio/gosdk/render"
+	"github.com/inkit/inkit-go/backend"
+	"github.com/inkit/inkit-go/render"
 )
 
 type Client struct {

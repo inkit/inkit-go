@@ -1,13 +1,13 @@
 # Getting Started
 
 ## Get the package
-`go get github.com/inkitio/gosdk@v0.1.18`
+`go get github.com/inkit/inkit-go@v0.1.20`
 
 ## Import the Inkit Sdk into your project
 ```golang
 import (
-	"github.com/inkitio/gosdk/client"
-	"github.com/inkitio/gosdk/render"
+	"github.com/inkit/inkit-go/client"
+	"github.com/inkit/inkit-go/render"
 )
 ```
 
@@ -49,16 +49,16 @@ render , err := client.Render.Get(render.Id)
 
 Retrieve Pdf
 ```golang
-pdfData, err := client.Render.GetPdf(render.id)
+pdfData, err := client.Render.GetPdf(render.Id)
 // or if you want to save it locally to a file
-err := client.Render.GetPdfAndSaveToFile(render.id, "test.pdf")
+err := client.Render.GetPdfAndSaveToFile(render.Id, "test.pdf")
 ```
 
 Retrieve Html
 ```golang
-htmlData, err := client.Render.GetHtml(render.id)
+htmlData, err := client.Render.GetHtml(render.Id)
 // or if you want to save it locally to a file
-err := client.Render.GetHtmlAndSaveToFile(render.id, "test.html")
+err := client.Render.GetHtmlAndSaveToFile(render.Id, "test.html")
 ```
 
 ## View a list of all renders in your organization
