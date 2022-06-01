@@ -37,20 +37,23 @@ func (b *Backend) GetRequest(relUrl string, attempts int) ([]byte, error) {
 		return nil, err
 	}
 
-	// pdfs are created async so attempts are polling inkit servers until rendering process is created
+	var res []byte
+	var reqError error
+
+	// need to poll for completed status because pdfs are created async
 	for i := 0; i < attempts; i++ {
 
-		res, err := b.sendRequest(req)
+		res, reqError = b.sendRequest(req)
 
-		if err == nil {
+		if reqError == nil {
 			return res, nil
-		} else {
-			fmt.Println(err)
 		}
+
+		time.Sleep(time.Second)
 	}
 
-	if err != nil {
-		return nil, err
+	if reqError != nil {
+		return nil, reqError
 	}
 
 	return nil, fmt.Errorf("Unkown error")
