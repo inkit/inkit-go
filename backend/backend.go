@@ -44,6 +44,8 @@ func (b *Backend) GetRequest(relUrl string, attempts int) ([]byte, error) {
 
 		if err == nil {
 			return res, nil
+		} else {
+			fmt.Println(err)
 		}
 	}
 
