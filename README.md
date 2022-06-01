@@ -1,7 +1,7 @@
 # Getting Started
 
 ## Get the package
-`go get github.com/inkit/inkit-go@v0.1.20`
+`go get github.com/inkit/inkit-go@v0.1.23`
 
 ## Import the Inkit Sdk into your project
 ```golang
@@ -83,4 +83,42 @@ for _, x := range renders.Items {
 	fmt.Println(x)
 }
 
+```
+
+
+## Full example
+
+main.go
+```golang
+package main
+
+import (
+	"fmt"
+
+	"github.com/inkit/inkit-go/client"
+	"github.com/inkit/inkit-go/render"
+)
+
+func main() {
+	client := client.NewClient("your_api_key")
+
+	options := render.CreateRenderOptions{
+		Html:   "<html>hello</html>",
+		Width:  8.5,
+		Height: 11,
+		Unit:   "in",
+	}
+
+	render, err := client.Render.Create(&options)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	err = client.Render.GetPdfAndSaveToFile(render.Id, "hello.pdf")
+
+	if err != nil {
+		fmt.Println(err)
+	}
+}
 ```
