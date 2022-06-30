@@ -10,6 +10,7 @@ type CreateRenderOptions struct {
 	MergeParameters   map[string]string `json:"merge_parameters,omitempty"`
 	ExpireAfterNViews int               `json:"expire_after_n_views,omitempty"`
 	TemplateId        string            `json:"template_id,omitempty"`
+	Name              string            `json:"name,omitempty"`
 }
 
 type RendersList struct {
@@ -19,6 +20,7 @@ type RendersList struct {
 
 type Render struct {
 	Id                string            `json:"id"`
+	Name              string            `json:"name"`
 	Html              string            `json:"html"`
 	TemplateId        string            `json:"template_id"`
 	FolderId          string            `json:"folder_id"`
